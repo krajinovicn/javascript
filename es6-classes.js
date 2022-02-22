@@ -1,43 +1,43 @@
 console.log("es6-classes script loaded");
 
 class Character {
-    constructor() {
-        if (new.target === Character) {
-            throw new TypeError("Can't construct Character instances directly.");
-        }
-        this.x = Math.trunc(Math.random() * 10);
-        this.y = Math.trunc(Math.random() * 10);
-        Character.count = (Character.count || 0) + 1;
+  constructor() {
+    if (new.target === Character) {
+      throw new TypeError("Can't construct Character instances directly.");
     }
-    
-    setCoordinates(x, y) {
-        if (x < 0 || x > 10 || y < 0 || y > 10) {
-            throw new RangeError("Coordinates out of bounds (10x10).");
-        }
-        this.x = x;
-        this.y = y;
-        console.log(`Coordinates set to x: ${this.x} and y: ${this.y}`);
-    }
+    this.x = Math.trunc(Math.random() * 10);
+    this.y = Math.trunc(Math.random() * 10);
+    Character.count = (Character.count || 0) + 1;
+  }
 
-    static get count() {
-        return Character._count;
+  setCoordinates(x, y) {
+    if (x < 0 || x > 10 || y < 0 || y > 10) {
+      throw new RangeError("Coordinates out of bounds (10x10).");
     }
+    this.x = x;
+    this.y = y;
+    console.log(`Coordinates set to x: ${this.x} and y: ${this.y}`);
+  }
 
-    static set count(count) {
-        Character._count = count;
-    }
+  static get count() {
+    return Character._count;
+  }
+
+  static set count(count) {
+    Character._count = count;
+  }
 }
 
 class PlayerCharacter extends Character {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 }
 
 class NonPlayerCharacter extends Character {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 }
 
 const char = new PlayerCharacter();
